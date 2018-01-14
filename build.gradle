@@ -1,0 +1,27 @@
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.10'
+    }
+
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'kotlin'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:23.0'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib'
+    testCompile 'junit:junit:4.12'
+}
+
+mainClassName = 'com.teste.start.KotlinStart'
