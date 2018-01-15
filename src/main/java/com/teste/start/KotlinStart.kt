@@ -5,7 +5,9 @@ import com.teste.model.Version
 import sun.plugin2.liveconnect.JavaClass
 import javax.persistence.EntityManager
 import javax.persistence.EntityManagerFactory
+import javax.persistence.EntityTransaction
 import javax.persistence.Persistence
+import javax.transaction.Transaction
 
 object KotlinStart {
 
@@ -14,7 +16,9 @@ object KotlinStart {
         try {
 
             val emf = Persistence.createEntityManagerFactory("androidStoreService")
-            val manager = emf.createEntityManager()
+            val manager:EntityManager = emf.createEntityManager()
+            val tx: EntityTransaction = manager.getTransaction()
+            tx.begin()
 
             //val app: App = manager.find(App::class.java, 1)
 
@@ -24,11 +28,11 @@ object KotlinStart {
             //manager.merge(app)
             manager.persist(app)
 
-
             val teste2: App = manager.find(App::class.java, 1L)
 
             println("Meu primeiro exemplo de metod main com Kotlin")
             println("id: ${teste2.packageName}")
+            tx.commit()
         } catch (error: Exception) {
             error.printStackTrace()
         } finally {
