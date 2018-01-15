@@ -1,9 +1,20 @@
 package com.teste.model
 
-class App(val packageName: String, val displayName: String) {
+import javax.persistence.*
 
-    override fun toString(): String {
-        return "App(packageName: ${packageName})"
-    }
+@Entity(name = "apps")
+data class App(
+
+        @Column(name = "package_name", unique = true)
+        val packageName: String? = null,
+
+        @Column(name = "display_name", unique = false)
+        val displayName: String? = null,
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        val id: Long? = null
+
+) {
 
 }
