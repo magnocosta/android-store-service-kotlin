@@ -20,18 +20,10 @@ object KotlinStart {
             val tx: EntityTransaction = manager.getTransaction()
             tx.begin()
 
-            //val app: App = manager.find(App::class.java, 1)
-
-            val teste: App? = manager.find(App::class.java, 1L)
-
             val app = App("cielo.apps", "Cielo Store")
-            //manager.merge(app)
             manager.persist(app)
 
-            val teste2: App = manager.find(App::class.java, 1L)
-
             println("Meu primeiro exemplo de metod main com Kotlin")
-            println("id: ${teste2.packageName}")
             tx.commit()
         } catch (error: Exception) {
             error.printStackTrace()
